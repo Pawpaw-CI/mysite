@@ -1,0 +1,59 @@
+
+
+
+
+
+创建超级用户
+python manage.py createsuperuser
+
+
+admin.py注册站点Blog
+
+
+*******数据库更换为Mysql*********
+1.打开mysql命令对话框
+
+输入 create database csvt default charset=utf8;
+或者使用nacative工具创建数据库
+2.修改setting中内容如下：
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog',
+        'USER':'root',
+        'PASSWORD':'root',
+        'HOST':'localhost',
+        'PORT':'3306',
+    }
+}
+3.打开myweb/blog/models.py,输入如下内容
+
+from django.db import models
+
+class Employee(models.Model):
+     name=models.CharField(max_length=20)
+
+****************国际化*************
+
+
+1模板问题：
+# TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),) django1.8以上版本移动至template
+
+2中文显示后台：
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/1.11/topics/i18n/
+
+#LANGUAGE_CODE = 'en-us'
+
+LANGUAGE_CODE = 'zh-Hans'
+
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
